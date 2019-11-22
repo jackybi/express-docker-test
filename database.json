@@ -1,0 +1,8 @@
+{
+  "dev": {
+    "driver": "mysql",
+    "user":{"ENV": "MYSQL_DB_USER"},
+    "password": {"ENV": "MYSQL_DB_PASSWORD"},
+    "database": {"ENV": "MYSQL_DB_NAME"}
+  }
+}
