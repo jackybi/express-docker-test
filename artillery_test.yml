@@ -2,10 +2,24 @@ config:
   target: 'http://192.168.1.159:3000'
   phases:
     - duration: 60
-      arrivalRate: 20
+      rampTo: 200
+  payload:
+    -
+      path: "testUserId.csv"
+      skipHeader: true
+      fields:
+        - "userId"
   defaults:
     headers:
 scenarios:
-  - flow:
+  - name: "get User Post"
+    flow:
       - get:
-          url: "/test3/5"
+          url: "/getUser/{{ userId }}"
+      - get:
+          url: "/getUserPosts/{{ userId }}"
+          capture:
+            json: "$.data[0].id"
+            as: "postId"
+      - get:
+          url: "/getPostComments/{{ postId }}"

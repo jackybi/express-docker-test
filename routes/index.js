@@ -18,31 +18,42 @@ router.get('/test', async (req, res) => {
   }
 })
 
-router.get('/test1/:userId', async (req, res) => {
+router.get('/getUser/:userId', async (req, res) => {
   try {
     let userinfosql = knex.table("users").where("id",req.params.userId).toString()
     let user = await query(userinfosql)
-    utils.successRequest(res, user)
+    utils.successRequest(res, user[0])
   } catch (e) {
     utils.failedRequest(res, e.message)
   }
 })
 
-router.get('/test2/:postId', async (req, res) => {
+router.get('/getUserPosts/:userId', async (req, res) => {
   try {
-    let postsql = knex.table("posts").where("id",req.params.postId).toString()
-    let post = await query(postsql)
-    utils.successRequest(res, post)
+    let postssql = knex.table("posts").where("user_id",req.params.userId).toString()
+    let posts = await query(postssql)
+    utils.successRequest(res, posts)
   } catch (e) {
     utils.failedRequest(res, e.message)
   }
 })
 
-router.get('/test3/:postId', async (req, res) => {
+router.get('/getPostComments/:postId', async (req, res) => {
   try {
     let commentssql = knex.table("comments").where("post_id",req.params.postId).toString()
     let comments = await query(commentssql)
     utils.successRequest(res, comments)
+  } catch (e) {
+    utils.failedRequest(res, e.message)
+  }
+})
+
+router.get('/addComment/:userId/:postId/:commentId/:content', async (req, res) => {
+  try {
+    let commentssql = knex.table("comments").insert({
+      user_id:req.params.userId,comment_id:req.params.commentId, post_id:req.params.postId, content: req.params.content}).toString()
+    let comments = await query(commentssql)
+    utils.successRequest(res)
   } catch (e) {
     utils.failedRequest(res, e.message)
   }
