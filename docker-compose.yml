@@ -14,43 +14,42 @@ services:
       NODE_ENV: development
     networks:
       - webnet
-    depends_on:
-      - mongo
-      - mysql
+#    depends_on:
+#      - mongo
     deploy:
       resources:
         limits:
           cpus: '0.20'
-  mongo:
-    image: mongo
-    restart: always
-    ports:
-      - 27017:27017
-    networks:
-      - webnet
-    volumes:
-      - mongodata:/data/db
-  mysql:
-    image: mysql:8.0
-    command:
-    - --default-authentication-plugin=mysql_native_password
-    - --character-set-server=utf8mb4
-    - --collation-server=utf8mb4_unicode_ci
-    restart: always
-    ports:
-      - 33306:3306
-    networks:
-      - webnet
-    volumes:
-      - mysqldata:/var/lib/mysql
-    environment:
-      MYSQL_DATABASE: docker-test
-      MYSQL_USER: test
-      MYSQL_PASSWORD: 123456
-      MYSQL_ROOT_PASSWORD: 123456
+#  mongo:
+#    image: mongo
+#    restart: always
+#    ports:
+#      - 27017:27017
+#    networks:
+#      - webnet
+#    volumes:
+#      - mongodata:/data/db
+#  mysql:
+#    image: mysql:8.0
+#    command:
+#    - --default-authentication-plugin=mysql_native_password
+#    - --character-set-server=utf8mb4
+#    - --collation-server=utf8mb4_unicode_ci
+#    restart: always
+#    ports:
+#      - 33306:3306
+#    networks:
+#      - webnet
+#    volumes:
+#      - mysqldata:/var/lib/mysql
+#    environment:
+#      MYSQL_DATABASE: docker-test
+#      MYSQL_USER: test
+#      MYSQL_PASSWORD: 123456
+#      MYSQL_ROOT_PASSWORD: 123456
 networks:
   webnet:
 volumes:
   mongodata:
   node_modules:
-  mysqldata:
+#  mysqldata:

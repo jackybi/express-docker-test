@@ -8,7 +8,7 @@ const { getSecret } = require('./secrets');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-mongoose.connect(getSecret('dbUri'), {useNewUrlParser: true});
+// mongoose.connect(getSecret('dbUri'), {useNewUrlParser: true});
 
 var app = express();
 
