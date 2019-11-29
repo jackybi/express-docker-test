@@ -1,5 +1,4 @@
 #!/bin/sh
 npm install
-npm install -g nodemon
 db-migrate up
-nodemon
+pm2-runtime ../bin/www
