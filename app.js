@@ -7,7 +7,8 @@ const mongoose = require('mongoose');
 const { getSecret } = require('./secrets');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+// const easyMonitor = require('easy-monitor');
+// easyMonitor('docker-express-test');
 // mongoose.connect(getSecret('dbUri'), {useNewUrlParser: true});
 
 var app = express();
