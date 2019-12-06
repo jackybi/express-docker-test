@@ -1,5 +1,6 @@
 FROM node:current-alpine
 
+RUN npm install -g pm2 && npm install -g nodemon && npm install -g db-migrate
 WORKDIR /app
 COPY . /app
 EXPOSE 3000

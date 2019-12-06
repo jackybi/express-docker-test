@@ -1,6 +1,5 @@
 #!/bin/sh
 npm install
-npm install -g pm2
-npm install -g db-migrate
 db-migrate up
+#nodemon
 pm2-runtime bin/www
