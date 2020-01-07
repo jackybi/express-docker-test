@@ -1,6 +1,6 @@
 FROM node:current-alpine
 
-RUN npm install -g pm2 && npm install -g nodemon && npm install -g db-migrate
+RUN npm config set registry https://registry.npm.taobao.org && npm install -g pm2 && npm install -g nodemon && npm install -g db-migrate
 WORKDIR /app
 COPY . /app
 EXPOSE 3000

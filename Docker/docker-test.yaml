@@ -1,0 +1,30 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: docker-test
+spec:
+  selector:
+    matchLabels:
+      app: docker-test
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: docker-test
+    spec:
+      containers:
+        - name: docker-test
+          image: jackybi/docker-test:k1.1
+          ports:
+              - containerPort: 3000
+          env:
+            - name: DB_URI
+              value: "mongodb://192.168.3.7:27017/test"
+            - name: MYSQL_DB_HOST
+              value: '192.168.3.7'
+            - name: MYSQL_DB_NAME
+              value: 'docker-test'
+            - name: MYSQL_DB_PASSWORD
+              value: '123456'
+            - name: MYSQL_DB_USER
+              value: 'root'

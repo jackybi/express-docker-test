@@ -3,9 +3,9 @@ module.exports =
     {
       mysql: {
         // host: '192.168.1.189',
-        host : config.MYSQL_DB_HOST,
-        user: config.MYSQL_DB_USER,
-        password: config.MYSQL_DB_PASSWORD,
-        database: config.MYSQL_DB_NAME,
+        host : process.env.MYSQL_DB_HOST,
+        user: process.env.MYSQL_DB_USER,
+        password: process.env.MYSQL_DB_PASSWORD,
+        database: process.env.MYSQL_DB_NAME,
       }
     };
